@@ -39,13 +39,12 @@ int main() {
             exit(0);
         }
         auto time_stop = std::chrono::high_resolution_clock::now();
-        std::cout << "Response duration: " << float(std::chrono::duration_cast<std::chrono::microseconds>(time_stop - time_start).count()) / 10e6 << "s\n";
+        std::cout << "Response duration: " << float(std::chrono::duration_cast<std::chrono::microseconds>(time_stop - time_start).count()) / 1e6 << "s\n";
     });
 
     bot.on_message_create([&](const dpp::message_create_t& event) {
-        if (event.msg.author.id.str() != bot.me.id.str()) {
-            std::cout << event.msg.to_json() << '\n';
-            event.reply("bruh");
+        if (event.msg.author.id.str() != bot.me.id.str() && event.msg.author.username == "kiwiidevulopir") {
+            event.send("Kiwii be like...");
         }
     });
 
