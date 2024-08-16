@@ -2,14 +2,31 @@
 #include <chrono>
 #include <thread>
 
-#include "EnviroumentFile.h"
-
+#pragma warning( push )
+#pragma warning(disable : 4251)
 #include "dpp/dpp.h"
+#pragma warning( pop )
+
+#include "EnviroumentFile.h"
+#include "Bot.h"
+
 
 int main() {
     EnviroumentFile env;
     std::cout << env["CLIENTID"] << "\n";
 
+    Bot bot_bot = Bot::getInstance();
+
+    bot_bot.init(true);
+
+    auto bot_inst = bot_bot.getBotInstance();
+    bot_bot.addSlashCommand({ "ping", "pong!", bot_inst->me.id }, [](const dpp::slashcommand_t& event){
+        std::cout << "pong!\n";
+        event.reply("pong!");
+    });
+
+    bot_bot.run();
+    /*
     dpp::cluster bot(env["TOKEN"]);
 
     bot.on_log(dpp::utility::cout_logger());
@@ -49,4 +66,5 @@ int main() {
     });
 
     bot.start(dpp::st_wait);
+    */
 }

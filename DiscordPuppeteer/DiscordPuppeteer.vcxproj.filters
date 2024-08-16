@@ -21,9 +21,15 @@
     <ClCompile Include="src\EnviroumentFile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Bot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\EnviroumentFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Bot.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
